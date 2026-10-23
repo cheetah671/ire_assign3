@@ -39,3 +39,52 @@ Only m and the re-ranking switch change.
 - *Consequence.* At recall 0.95, IVF-PQ + re-ranking with a small m should be
   at least as fast as IVF-Flat, because scanning m-byte codes is cheaper than
   scanning 512-byte vectors; plain IVF-PQ cannot reach 0.95 at all.
+
+## Part 4: Hard geometry (synthetic data)
+
+**Question.** How does the *intrinsic* dimension of the data change the work
+HNSW and IVF-Flat need to reach a given recall?
+
+**Data.** 200,000 base vectors and 10,000 queries drawn from a standard
+Gaussian in d dimensions, d in {8, 16, 32, 64, 128}, then mapped into 128
+dimensions with a fixed random orthonormal matrix. Every setting is stored as
+128-d float vectors, so one distance computation costs the same in all of
+them; only the geometry changes. Seeded, so every run makes the same data.
+**Control:** the first 200,000 SIFT vectors (128-d, real data), unchanged,
+run through the same pipeline and the same index settings.
+
+**Indexes (fixed build settings).** HNSW with M = 16, efConstruction = 100,
+sweeping efSearch; IVF-Flat with nlist = 512, sweeping nprobe. Same recall
+and timing method as Part 2 (tune on the first 5,000 queries, report on the
+last 5,000). We also record the relative contrast (mean distance to a
+random base vector divided by the distance to the nearest neighbour) and the
+number of distance computations per query.
+
+**Hypothesis.**
+
+- *Contrast collapses as d grows.* With more independent directions, all
+  distances concentrate around the same value, so the nearest neighbour is
+  barely closer than a random point. We expect relative contrast to fall
+  steadily with d and approach 1 at d = 128.
+- *IVF-Flat degrades the most.* With low contrast a query's true neighbours
+  are spread over many Voronoi cells, since most points lie near a cell
+  boundary in high dimensions. We expect the fraction of lists IVF must probe
+  for recall 0.95 to grow from a few percent at d = 8 to more than half of
+  all lists at d = 128, so its QPS at 0.95 falls close to exact search.
+- *HNSW also degrades, but more slowly.* Greedy graph search relies on
+  "closer neighbours lead towards the target"; with low contrast that signal
+  is weak, so efSearch and distance computations per query must rise. We
+  expect distance computations at recall 0.95 to grow by more than 10x from
+  d = 8 to d = 128, and HNSW may not reach 0.95 at all at d = 128 within
+  efSearch <= 1024. HNSW should still beat IVF-Flat at every d.
+- *Because the per-distance cost is fixed, the QPS drop should track the
+  growth in distance computations.*
+- *Real SIFT behaves like low-dimensional data.* Although SIFT has 128
+  dimensions, its points lie near a much lower-dimensional structure, so we
+  expect its contrast and the work needed to sit between the d = 8 and
+  d = 32 synthetic settings, far from d = 128. This would mean the Part 2
+  headline numbers for SIFT are much better than what the same indexes would
+  give on truly high-dimensional data.
+
+**Not tested here.** Changing the stored (ambient) dimension, clustered or
+skewed data, dataset size, and compressed indexes.
