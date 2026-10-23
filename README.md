@@ -39,6 +39,9 @@ numbers, tables and figures from the data files.
 | `ann/results.py` | output locations, CSV writer |
 | `tests/test_recall.py` | unit tests for recall@k |
 | `scripts/part1_exact.py` | Part 1: exact baseline, check against file, timing |
+| `ann/indexes.py` | index building, build settings, search-parameter sweeps |
+| `scripts/part2_benchmark.py` | Part 2: build + sweep every index on both datasets |
+| `scripts/part2_report.py` | Part 2: trade-off plots, QPS-at-recall and build-cost tables |
 
 ## Conventions
 
@@ -46,4 +49,10 @@ numbers, tables and figures from the data files.
 - Queries 0-4,999 are used for tuning, 5,000-9,999 for reported numbers.
 - Recall@10: a returned id counts as correct if its exact distance is no larger
   than the true 10th-neighbour distance, so ties at the 10th neighbour are not mistakes.
-- Speed: queries per second, one query per call, one thread, median of 5 timed passes.
+- Speed: queries per second, one query per call, one thread, median of 5 timed passes
+  (Part 2: first 2,000 test queries; exact one-at-a-time: first 500, as it takes ~30 ms/query).
+  Index building uses all cores.
+- Operating points (e.g. "QPS at recall 0.95") are chosen on the tune queries only
+  (tune recall >= target, highest QPS on tune queries); the reported recall and QPS
+  are then measured on the test queries.
+- Outputs: `results/raw/*.csv` (every run), `results/tables/`, `results/figures/`.

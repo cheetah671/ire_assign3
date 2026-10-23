@@ -17,3 +17,7 @@ echo "== environment"
 
 echo "== Part 1: exact baseline"
 "$PY" scripts/part1_exact.py $QUICK
+
+echo "== Part 2: HNSW / IVF-Flat / IVF-PQ benchmark"
+"$PY" scripts/part2_benchmark.py $QUICK
+"$PY" scripts/part2_report.py $QUICK

@@ -1,0 +1,15 @@
+dataset,index,target,setting,recall10,qps,speedup_vs_exact,max_recall10,note
+sift,HNSW,0.9,M=32 efC=100 efSearch=32,0.92742,11381.173717690412,350.2317480119324,,
+sift,HNSW,0.95,M=32 efC=100 efSearch=48,0.95784,8480.778739016527,260.9781764117508,,
+sift,IVF-Flat,0.9,nlist=4096 nprobe=32,0.9325,2866.6897530749184,88.21636398245461,,
+sift,IVF-Flat,0.95,nlist=2048 nprobe=32,0.9614,1768.6165015105971,54.425462984015084,,
+sift,IVF-PQ,0.9,not reached,,,,0.8846200000000001,max 0.885 at nlist=2048 m=64 nprobe=512
+sift,IVF-PQ,0.95,not reached,,,,0.8846200000000001,max 0.885 at nlist=2048 m=64 nprobe=512
+glove,HNSW,0.9,M=32 efC=100 efSearch=256,0.9107,1425.0116476891594,42.09447385471216,,
+glove,HNSW,0.95,M=32 efC=100 efSearch=768,0.96232,440.85171846645886,13.022645230222881,,
+glove,IVF-Flat,0.9,nlist=2048 nprobe=128,0.9201,537.4230510957858,15.875337306861013,,
+glove,IVF-Flat,0.95,nlist=2048 nprobe=256,0.95846,301.0332711152744,8.892444620301466,,
+glove,IVF-PQ,0.9,not reached,,,,0.86366,max 0.864 at nlist=2048 m=50 nprobe=512
+glove,IVF-PQ,0.95,not reached,,,,0.86366,max 0.864 at nlist=2048 m=50 nprobe=512
+sift,Exact (Flat),any,,1.0,32.49612230271784,1.0,,
+glove,Exact (Flat),any,,1.0,33.85270125022931,1.0,,

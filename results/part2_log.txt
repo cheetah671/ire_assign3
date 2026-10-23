@@ -1,0 +1,228 @@
+
+== sift: 1,000,000 x 128
+  HNSW {'M': 8, 'efC': 100}: train 0.0s add 50.1s size 565.1 MiB (592.6 B/vec)
+    efSearch=   10  recall tune=0.5563 test=0.6000  QPS=  36364.8
+    efSearch=   16  recall tune=0.6554 test=0.6987  QPS=  27656.7
+    efSearch=   24  recall tune=0.7376 test=0.7700  QPS=  21385.1
+    efSearch=   32  recall tune=0.7869 test=0.8140  QPS=  18378.5
+    efSearch=   48  recall tune=0.8479 test=0.8674  QPS=  13526.7
+    efSearch=   64  recall tune=0.8838 test=0.8970  QPS=  10596.3
+    efSearch=   96  recall tune=0.9239 test=0.9316  QPS=   7299.6
+    efSearch=  128  recall tune=0.9435 test=0.9500  QPS=   5587.4
+    efSearch=  192  recall tune=0.9634 test=0.9701  QPS=   3396.1
+    efSearch=  256  recall tune=0.9739 test=0.9788  QPS=   2665.8
+    efSearch=  384  recall tune=0.9840 test=0.9871  QPS=    771.3
+    efSearch=  512  recall tune=0.9887 test=0.9911  QPS=    560.5
+    efSearch=  768  recall tune=0.9928 test=0.9942  QPS=    316.6
+    efSearch= 1024  recall tune=0.9949 test=0.9956  QPS=    448.7
+    (190s for this setting)
+  HNSW {'M': 16, 'efC': 100}: train 0.0s add 96.9s size 625.9 MiB (656.3 B/vec)
+    efSearch=   10  recall tune=0.6908 test=0.7166  QPS=  29141.0
+    efSearch=   16  recall tune=0.7853 test=0.8058  QPS=  21539.8
+    efSearch=   24  recall tune=0.8503 test=0.8679  QPS=  16937.0
+    efSearch=   32  recall tune=0.8908 test=0.9040  QPS=  13916.6
+    efSearch=   48  recall tune=0.9334 test=0.9433  QPS=  10104.9
+    efSearch=   64  recall tune=0.9561 test=0.9625  QPS=   8021.0
+    efSearch=   96  recall tune=0.9768 test=0.9799  QPS=   5606.8
+    efSearch=  128  recall tune=0.9863 test=0.9878  QPS=   4329.7
+    efSearch=  192  recall tune=0.9933 test=0.9942  QPS=   2935.8
+    efSearch=  256  recall tune=0.9965 test=0.9972  QPS=   2199.2
+    (121s for this setting)
+  HNSW {'M': 32, 'efC': 100}: train 0.0s add 65.5s size 747.8 MiB (784.1 B/vec)
+    efSearch=   10  recall tune=0.7426 test=0.7616  QPS=  21969.5
+    efSearch=   16  recall tune=0.8292 test=0.8417  QPS=  18423.2
+    efSearch=   24  recall tune=0.8895 test=0.8976  QPS=  13937.0
+    efSearch=   32  recall tune=0.9206 test=0.9274  QPS=  11381.2
+    efSearch=   48  recall tune=0.9530 test=0.9578  QPS=   8480.8
+    efSearch=   64  recall tune=0.9698 test=0.9738  QPS=   6687.6
+    efSearch=   96  recall tune=0.9854 test=0.9868  QPS=   4739.6
+    efSearch=  128  recall tune=0.9919 test=0.9920  QPS=   3645.6
+    efSearch=  192  recall tune=0.9967 test=0.9966  QPS=   2422.5
+    (87s for this setting)
+  IVF-Flat {'nlist': 1024}: train 5.8s add 2.3s size 496.4 MiB (520.5 B/vec)
+    nprobe=    1  recall tune=0.3526 test=0.3936  QPS=  19762.5
+    nprobe=    2  recall tune=0.5196 test=0.5617  QPS=  11453.8
+    nprobe=    4  recall tune=0.6852 test=0.7246  QPS=   6550.0
+    nprobe=    8  recall tune=0.8297 test=0.8490  QPS=   3385.6
+    nprobe=   16  recall tune=0.9281 test=0.9366  QPS=   1773.0
+    nprobe=   32  recall tune=0.9772 test=0.9791  QPS=    903.0
+    nprobe=   64  recall tune=0.9960 test=0.9958  QPS=    461.5
+    (73s for this setting)
+  IVF-Flat {'nlist': 2048}: train 22.1s add 4.3s size 496.9 MiB (521.1 B/vec)
+    nprobe=    1  recall tune=0.3058 test=0.3389  QPS=  20818.7
+    nprobe=    2  recall tune=0.4552 test=0.4972  QPS=  14145.2
+    nprobe=    4  recall tune=0.6143 test=0.6545  QPS=   9369.8
+    nprobe=    8  recall tune=0.7653 test=0.7939  QPS=   5810.8
+    nprobe=   16  recall tune=0.8810 test=0.8976  QPS=   3410.1
+    nprobe=   32  recall tune=0.9542 test=0.9614  QPS=   1768.6
+    nprobe=   64  recall tune=0.9873 test=0.9889  QPS=    910.3
+    nprobe=  128  recall tune=0.9977 test=0.9980  QPS=    457.1
+    (94s for this setting)
+  IVF-Flat {'nlist': 4096}: train 79.3s add 8.1s size 497.9 MiB (522.1 B/vec)
+    nprobe=    1  recall tune=0.2609 test=0.3030  QPS=  13932.4
+    nprobe=    2  recall tune=0.3963 test=0.4455  QPS=  11840.5
+    nprobe=    4  recall tune=0.5507 test=0.5985  QPS=   9826.8
+    nprobe=    8  recall tune=0.7006 test=0.7404  QPS=   7143.5
+    nprobe=   16  recall tune=0.8289 test=0.8548  QPS=   4329.9
+    nprobe=   32  recall tune=0.9210 test=0.9325  QPS=   2866.7
+    nprobe=   64  recall tune=0.9717 test=0.9768  QPS=   1526.0
+    nprobe=  128  recall tune=0.9932 test=0.9942  QPS=    853.1
+    nprobe=  256  recall tune=0.9992 test=0.9993  QPS=    447.0
+    (162s for this setting)
+  IVF-PQ {'nlist': 2048, 'm': 16}: train 36.5s add 6.1s size 24.0 MiB (25.2 B/vec)
+    nprobe=    1  recall tune=0.2670 test=0.2905  QPS=  20790.6
+    nprobe=    2  recall tune=0.3672 test=0.3960  QPS=  17792.2
+    nprobe=    4  recall tune=0.4556 test=0.4808  QPS=  14589.3
+    nprobe=    8  recall tune=0.5171 test=0.5369  QPS=  10713.0
+    nprobe=   16  recall tune=0.5520 test=0.5665  QPS=   6667.7
+    nprobe=   32  recall tune=0.5694 test=0.5806  QPS=   4017.7
+    nprobe=   64  recall tune=0.5754 test=0.5845  QPS=   2229.9
+    nprobe=  128  recall tune=0.5765 test=0.5854  QPS=   1180.0
+    nprobe=  256  recall tune=0.5765 test=0.5855  QPS=    606.5
+    (88s for this setting)
+  IVF-PQ {'nlist': 2048, 'm': 32}: train 58.0s add 8.4s size 39.3 MiB (41.2 B/vec)
+    nprobe=    1  recall tune=0.2922 test=0.3195  QPS=  15720.5
+    nprobe=    2  recall tune=0.4206 test=0.4533  QPS=  12765.8
+    nprobe=    4  recall tune=0.5387 test=0.5690  QPS=   9845.6
+    nprobe=    8  recall tune=0.6321 test=0.6537  QPS=   6639.1
+    nprobe=   16  recall tune=0.6896 test=0.7045  QPS=   4091.8
+    nprobe=   32  recall tune=0.7189 test=0.7302  QPS=   2368.2
+    nprobe=   64  recall tune=0.7296 test=0.7385  QPS=   1279.5
+    nprobe=  128  recall tune=0.7318 test=0.7413  QPS=    658.3
+    nprobe=  256  recall tune=0.7323 test=0.7417  QPS=    332.8
+    nprobe=  512  recall tune=0.7324 test=0.7417  QPS=     71.5
+    (313s for this setting)
+  IVF-PQ {'nlist': 2048, 'm': 64}: train 82.1s add 11.4s size 69.8 MiB (73.2 B/vec)
+    nprobe=    1  recall tune=0.3028 test=0.3339  QPS=  11782.9
+    nprobe=    2  recall tune=0.4467 test=0.4851  QPS=   9249.7
+    nprobe=    4  recall tune=0.5936 test=0.6301  QPS=   6457.5
+    nprobe=    8  recall tune=0.7220 test=0.7483  QPS=   4039.6
+    nprobe=   16  recall tune=0.8075 test=0.8238  QPS=   2310.8
+    nprobe=   32  recall tune=0.8553 test=0.8646  QPS=    483.6
+    nprobe=   64  recall tune=0.8731 test=0.8795  QPS=    247.1
+    nprobe=  128  recall tune=0.8776 test=0.8838  QPS=    215.8
+    nprobe=  256  recall tune=0.8785 test=0.8846  QPS=    179.9
+    nprobe=  512  recall tune=0.8786 test=0.8846  QPS=     93.8
+    (451s for this setting)
+
+== glove: 1,183,514 x 100
+  HNSW {'M': 8, 'efC': 100}: train 0.0s add 58.3s size 542.4 MiB (480.6 B/vec)
+    efSearch=   10  recall tune=0.2993 test=0.2931  QPS=  32147.4
+    efSearch=   16  recall tune=0.3694 test=0.3662  QPS=  23974.2
+    efSearch=   24  recall tune=0.4339 test=0.4344  QPS=  18517.1
+    efSearch=   32  recall tune=0.4800 test=0.4755  QPS=  15094.4
+    efSearch=   48  recall tune=0.5447 test=0.5396  QPS=  11273.5
+    efSearch=   64  recall tune=0.5841 test=0.5809  QPS=   8868.8
+    efSearch=   96  recall tune=0.6408 test=0.6372  QPS=   5528.2
+    efSearch=  128  recall tune=0.6762 test=0.6747  QPS=   4720.7
+    efSearch=  192  recall tune=0.7202 test=0.7226  QPS=   3150.5
+    efSearch=  256  recall tune=0.7458 test=0.7493  QPS=   2374.0
+    efSearch=  384  recall tune=0.7779 test=0.7826  QPS=   1578.1
+    efSearch=  512  recall tune=0.7985 test=0.8023  QPS=   1139.9
+    efSearch=  768  recall tune=0.8257 test=0.8273  QPS=    690.3
+    efSearch= 1024  recall tune=0.8421 test=0.8427  QPS=    464.9
+    (145s for this setting)
+  HNSW {'M': 16, 'efC': 100}: train 0.0s add 76.0s size 614.3 MiB (544.3 B/vec)
+    efSearch=   10  recall tune=0.4598 test=0.4581  QPS=  22955.5
+    efSearch=   16  recall tune=0.5425 test=0.5428  QPS=  17492.1
+    efSearch=   24  recall tune=0.6106 test=0.6103  QPS=  13118.0
+    efSearch=   32  recall tune=0.6517 test=0.6541  QPS=  10771.3
+    efSearch=   48  recall tune=0.7091 test=0.7113  QPS=   7845.0
+    efSearch=   64  recall tune=0.7407 test=0.7435  QPS=   6450.7
+    efSearch=   96  recall tune=0.7859 test=0.7852  QPS=   4579.0
+    efSearch=  128  recall tune=0.8139 test=0.8121  QPS=   3581.3
+    efSearch=  192  recall tune=0.8457 test=0.8444  QPS=   2457.5
+    efSearch=  256  recall tune=0.8654 test=0.8654  QPS=   1855.5
+    efSearch=  384  recall tune=0.8902 test=0.8900  QPS=   1218.7
+    efSearch=  512  recall tune=0.9063 test=0.9069  QPS=    891.6
+    efSearch=  768  recall tune=0.9266 test=0.9265  QPS=    550.0
+    efSearch= 1024  recall tune=0.9386 test=0.9379  QPS=    381.2
+    (188s for this setting)
+  HNSW {'M': 32, 'efC': 100}: train 0.0s add 104.5s size 758.6 MiB (672.2 B/vec)
+    efSearch=   10  recall tune=0.5497 test=0.5481  QPS=  15715.6
+    efSearch=   16  recall tune=0.6286 test=0.6269  QPS=  13414.2
+    efSearch=   24  recall tune=0.6866 test=0.6870  QPS=  10037.3
+    efSearch=   32  recall tune=0.7242 test=0.7284  QPS=   8282.7
+    efSearch=   48  recall tune=0.7754 test=0.7756  QPS=   6100.1
+    efSearch=   64  recall tune=0.8043 test=0.8066  QPS=   4845.4
+    efSearch=   96  recall tune=0.8407 test=0.8441  QPS=   3475.7
+    efSearch=  128  recall tune=0.8638 test=0.8657  QPS=   2702.4
+    efSearch=  192  recall tune=0.8915 test=0.8928  QPS=   1871.4
+    efSearch=  256  recall tune=0.9112 test=0.9107  QPS=   1425.0
+    efSearch=  384  recall tune=0.9329 test=0.9330  QPS=    946.5
+    efSearch=  512  recall tune=0.9465 test=0.9461  QPS=    696.9
+    efSearch=  768  recall tune=0.9621 test=0.9623  QPS=    440.9
+    efSearch= 1024  recall tune=0.9715 test=0.9710  QPS=    308.6
+    (258s for this setting)
+  IVF-Flat {'nlist': 1024}: train 5.3s add 2.5s size 460.9 MiB (408.4 B/vec)
+    nprobe=    1  recall tune=0.3871 test=0.3888  QPS=  21003.9
+    nprobe=    2  recall tune=0.5148 test=0.5193  QPS=  12521.0
+    nprobe=    4  recall tune=0.6275 test=0.6307  QPS=   6653.2
+    nprobe=    8  recall tune=0.7185 test=0.7215  QPS=   3568.5
+    nprobe=   16  recall tune=0.7966 test=0.7970  QPS=   1899.2
+    nprobe=   32  recall tune=0.8574 test=0.8580  QPS=   1013.3
+    nprobe=   64  recall tune=0.9094 test=0.9074  QPS=    521.8
+    nprobe=  128  recall tune=0.9508 test=0.9496  QPS=    278.2
+    nprobe=  256  recall tune=0.9806 test=0.9810  QPS=    138.6
+    nprobe=  512  recall tune=0.9969 test=0.9973  QPS=     67.1
+    (464s for this setting)
+  IVF-Flat {'nlist': 2048}: train 20.6s add 4.7s size 461.3 MiB (408.7 B/vec)
+    nprobe=    1  recall tune=0.3532 test=0.3543  QPS=  22368.9
+    nprobe=    2  recall tune=0.4716 test=0.4748  QPS=  17420.9
+    nprobe=    4  recall tune=0.5843 test=0.5849  QPS=  10770.6
+    nprobe=    8  recall tune=0.6779 test=0.6783  QPS=   5908.3
+    nprobe=   16  recall tune=0.7533 test=0.7549  QPS=   3497.1
+    nprobe=   32  recall tune=0.8186 test=0.8202  QPS=   1940.2
+    nprobe=   64  recall tune=0.8734 test=0.8743  QPS=   1047.7
+    nprobe=  128  recall tune=0.9206 test=0.9201  QPS=    537.4
+    nprobe=  256  recall tune=0.9574 test=0.9585  QPS=    301.0
+    nprobe=  512  recall tune=0.9849 test=0.9837  QPS=    148.1
+    (240s for this setting)
+  IVF-Flat {'nlist': 4096}: train 81.2s add 9.1s size 462.1 MiB (409.4 B/vec)
+    nprobe=    1  recall tune=0.3226 test=0.3207  QPS=  17055.7
+    nprobe=    2  recall tune=0.4348 test=0.4362  QPS=  14495.7
+    nprobe=    4  recall tune=0.5390 test=0.5420  QPS=  12139.8
+    nprobe=    8  recall tune=0.6313 test=0.6361  QPS=   8636.6
+    nprobe=   16  recall tune=0.7103 test=0.7155  QPS=   5622.5
+    nprobe=   32  recall tune=0.7798 test=0.7831  QPS=   3381.0
+    nprobe=   64  recall tune=0.8394 test=0.8418  QPS=   1894.9
+    nprobe=  128  recall tune=0.8900 test=0.8907  QPS=   1003.8
+    nprobe=  256  recall tune=0.9311 test=0.9316  QPS=    522.1
+    nprobe=  512  recall tune=0.9641 test=0.9649  QPS=    265.5
+    (211s for this setting)
+  IVF-PQ {'nlist': 2048, 'm': 10}: train 29.3s add 6.5s size 21.2 MiB (18.8 B/vec)
+    nprobe=    1  recall tune=0.2039 test=0.2018  QPS=  24880.0
+    nprobe=    2  recall tune=0.2440 test=0.2434  QPS=  22167.0
+    nprobe=    4  recall tune=0.2721 test=0.2729  QPS=  17695.0
+    nprobe=    8  recall tune=0.2890 test=0.2910  QPS=  13334.2
+    nprobe=   16  recall tune=0.3000 test=0.3013  QPS=   8946.9
+    nprobe=   32  recall tune=0.3069 test=0.3077  QPS=   5595.7
+    nprobe=   64  recall tune=0.3100 test=0.3122  QPS=   3222.9
+    nprobe=  128  recall tune=0.3123 test=0.3138  QPS=   1767.0
+    nprobe=  256  recall tune=0.3135 test=0.3154  QPS=    943.5
+    nprobe=  512  recall tune=0.3138 test=0.3159  QPS=    487.4
+    (94s for this setting)
+  IVF-PQ {'nlist': 2048, 'm': 25}: train 50.3s add 8.3s size 38.1 MiB (33.8 B/vec)
+    nprobe=    1  recall tune=0.3046 test=0.3047  QPS=  18855.2
+    nprobe=    2  recall tune=0.3886 test=0.3890  QPS=  15151.3
+    nprobe=    4  recall tune=0.4597 test=0.4595  QPS=  11526.2
+    nprobe=    8  recall tune=0.5099 test=0.5117  QPS=   7881.3
+    nprobe=   16  recall tune=0.5468 test=0.5463  QPS=   4814.1
+    nprobe=   32  recall tune=0.5735 test=0.5737  QPS=   2790.8
+    nprobe=   64  recall tune=0.5922 test=0.5936  QPS=   1530.4
+    nprobe=  128  recall tune=0.6056 test=0.6062  QPS=    813.2
+    nprobe=  256  recall tune=0.6136 test=0.6149  QPS=    428.3
+    nprobe=  512  recall tune=0.6191 test=0.6199  QPS=    218.2
+    (180s for this setting)
+  IVF-PQ {'nlist': 2048, 'm': 50}: train 61.9s add 11.0s size 66.4 MiB (58.8 B/vec)
+    nprobe=    1  recall tune=0.3453 test=0.3456  QPS=  14349.1
+    nprobe=    2  recall tune=0.4566 test=0.4586  QPS=  10842.6
+    nprobe=    4  recall tune=0.5585 test=0.5579  QPS=   7612.1
+    nprobe=    8  recall tune=0.6392 test=0.6397  QPS=   4750.7
+    nprobe=   16  recall tune=0.7017 test=0.7031  QPS=   2740.7
+    nprobe=   32  recall tune=0.7532 test=0.7558  QPS=   1518.4
+    nprobe=   64  recall tune=0.7945 test=0.7964  QPS=    813.5
+    nprobe=  128  recall tune=0.8268 test=0.8283  QPS=    427.6
+    nprobe=  256  recall tune=0.8494 test=0.8510  QPS=    127.7
+    nprobe=  512  recall tune=0.8635 test=0.8637  QPS=    112.9
+    (347s for this setting)
