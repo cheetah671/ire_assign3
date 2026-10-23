@@ -29,3 +29,13 @@ echo "== Part 3: compression experiment (SIFT)"
 echo "== Part 4: intrinsic dimension experiment (synthetic data)"
 "$PY" scripts/part4_geometry.py $QUICK
 "$PY" scripts/part4_report.py $QUICK
+
+echo "== check: timing straight after a build"
+"$PY" scripts/check_timing_bias.py $QUICK
+
+echo "== relative contrast of the real datasets"
+"$PY" scripts/dataset_stats.py $QUICK
+
+echo "== merge every run into results.csv"
+"$PY" scripts/collect_results.py $QUICK
+echo "done"

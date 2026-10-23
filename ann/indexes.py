@@ -61,6 +61,8 @@ def build(kind, xb, params, threads=None):
         # k-means uses at most 256 points per centroid; sample them ourselves
         # with a fixed seed so every run trains on the same points
         n_train = min(xb.shape[0], 256 * params["nlist"])
+        if QUICK and kind == "IVF-PQ":
+            n_train = min(n_train, 25_000)  # --quick: PQ codebook training dominates the run time
         rs = np.random.default_rng(123)
         sample = xb[np.sort(rs.choice(xb.shape[0], n_train, replace=False))]
         index.cp.seed = 1234  # k-means seed (IVF quantiser)
@@ -113,7 +115,7 @@ def sweep(kind, params, index, ds, gt_D, gt_I, n_time, repeats=5, stop_recall=0.
         and recovered within ~10 s (see scripts/check_timing_bias.py).
     """
     if cooldown is None:
-        cooldown = 5 if QUICK else 20
+        cooldown = 2 if QUICK else 20
     time.sleep(cooldown)
     search = search or index.search
     xq_tune, xq_test = ds.xq[ds.tune], ds.xq[ds.test]

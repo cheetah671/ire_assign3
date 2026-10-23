@@ -77,7 +77,7 @@ def main():
         # after data generation and ground truth) it came out ~2x too slow.
         exact = faiss.IndexFlatL2(ds.d)
         exact.add(ds.xb)
-        time.sleep(5 if QUICK else 20)
+        time.sleep(2 if QUICK else 20)
         exact_qps, _ = measure_qps(exact.search, xq_test[:300], 10, repeats=args.repeats, threads=1)
         print(f"  exact: {exact_qps:.1f} QPS", flush=True)
         del exact
