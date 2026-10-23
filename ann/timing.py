@@ -1,8 +1,22 @@
 """Timing helpers: wall-clock, repeated, median."""
+import sys
 import time
 
 import faiss
 import numpy as np
+
+
+def keep_awake():
+    """Ask Windows not to sleep from inactivity while benchmarks run (a sleep
+    in the middle of a timed pass would count as search time). No effect on
+    other systems, and it cannot stop sleep caused by closing the lid."""
+    if sys.platform == "win32":
+        import ctypes
+        ES_CONTINUOUS, ES_SYSTEM_REQUIRED = 0x80000000, 0x00000001
+        ctypes.windll.kernel32.SetThreadExecutionState(ES_CONTINUOUS | ES_SYSTEM_REQUIRED)
+
+
+keep_awake()
 
 
 def _run(search, xq, k, one_at_a_time):
