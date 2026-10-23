@@ -42,6 +42,10 @@ numbers, tables and figures from the data files.
 | `ann/indexes.py` | index building, build settings, search-parameter sweeps |
 | `scripts/part2_benchmark.py` | Part 2: build + sweep every index on both datasets |
 | `scripts/part2_report.py` | Part 2: trade-off plots, QPS-at-recall and build-cost tables |
+| `scripts/part3_compression.py` | Part 3: IVF-PQ vs IVF-PQ + exact re-ranking of the top 100, varying m |
+| `scripts/part3_report.py` | Part 3: figure and table (IVF-Flat from Part 2 as the control) |
+| `scripts/check_timing_bias.py` | checks how much timing right after a build is slowed down |
+| `hypothesis.md` | Part 3 and Part 4 hypotheses (each committed before its experiment ran) |
 
 ## Conventions
 
@@ -51,7 +55,8 @@ numbers, tables and figures from the data files.
   than the true 10th-neighbour distance, so ties at the 10th neighbour are not mistakes.
 - Speed: queries per second, one query per call, one thread, median of 5 timed passes
   (Part 2: first 2,000 test queries; exact one-at-a-time: first 500, as it takes ~30 ms/query).
-  Index building uses all cores.
+  Index building uses all cores. Timing starts 20 s after each build (5 s in --quick):
+  measuring straight after an all-core build was ~30% slow on this laptop.
 - Operating points (e.g. "QPS at recall 0.95") are chosen on the tune queries only
   (tune recall >= target, highest QPS on tune queries); the reported recall and QPS
   are then measured on the test queries.

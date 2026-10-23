@@ -21,3 +21,7 @@ echo "== Part 1: exact baseline"
 echo "== Part 2: HNSW / IVF-Flat / IVF-PQ benchmark"
 "$PY" scripts/part2_benchmark.py $QUICK
 "$PY" scripts/part2_report.py $QUICK
+
+echo "== Part 3: compression experiment (SIFT)"
+"$PY" scripts/part3_compression.py $QUICK
+"$PY" scripts/part3_report.py $QUICK

@@ -1,0 +1,96 @@
+== sift 1,000,000 vectors, nlist=2048
+  m=8: train 29.6s add 7.7s  17.2 B/vec plain, 529.2 B/vec with re-ranking
+   plain
+    nprobe=    1  recall tune=0.2185 test=0.2374  QPS=   8919.1
+    nprobe=    2  recall tune=0.2831 test=0.3038  QPS=   7565.2
+    nprobe=    4  recall tune=0.3319 test=0.3530  QPS=   6121.4
+    nprobe=    8  recall tune=0.3644 test=0.3806  QPS=  12901.6
+    nprobe=   16  recall tune=0.3802 test=0.3949  QPS=   9611.3
+    nprobe=   32  recall tune=0.3862 test=0.3998  QPS=   6213.4
+    nprobe=   64  recall tune=0.3879 test=0.4010  QPS=   3490.2
+    nprobe=  128  recall tune=0.3880 test=0.4012  QPS=   2003.5
+    nprobe=  256  recall tune=0.3880 test=0.4012  QPS=   1077.3
+    nprobe=  512  recall tune=0.3880 test=0.4012  QPS=    572.8
+   (82s)
+   rerank100
+    nprobe=    1  recall tune=0.3040 test=0.3367  QPS=  15575.4
+    nprobe=    2  recall tune=0.4492 test=0.4902  QPS=  13374.1
+    nprobe=    4  recall tune=0.5961 test=0.6351  QPS=  11027.3
+    nprobe=    8  recall tune=0.7227 test=0.7517  QPS=  10349.5
+    nprobe=   16  recall tune=0.8046 test=0.8255  QPS=   7041.4
+    nprobe=   32  recall tune=0.8458 test=0.8618  QPS=   5228.6
+    nprobe=   64  recall tune=0.8598 test=0.8732  QPS=   3268.9
+    nprobe=  128  recall tune=0.8629 test=0.8759  QPS=   1856.4
+    nprobe=  256  recall tune=0.8633 test=0.8762  QPS=   1011.3
+    nprobe=  512  recall tune=0.8633 test=0.8762  QPS=    541.3
+   (75s)
+  m=16: train 35.9s add 6.1s  25.2 B/vec plain, 537.2 B/vec with re-ranking
+   plain
+    nprobe=    1  recall tune=0.2670 test=0.2905  QPS=  21250.0
+    nprobe=    2  recall tune=0.3672 test=0.3960  QPS=  18290.2
+    nprobe=    4  recall tune=0.4556 test=0.4808  QPS=  14968.8
+    nprobe=    8  recall tune=0.5171 test=0.5369  QPS=  10407.3
+    nprobe=   16  recall tune=0.5520 test=0.5665  QPS=   7186.7
+    nprobe=   32  recall tune=0.5694 test=0.5806  QPS=   4200.0
+    nprobe=   64  recall tune=0.5754 test=0.5845  QPS=   2086.7
+    nprobe=  128  recall tune=0.5765 test=0.5854  QPS=   1239.1
+    nprobe=  256  recall tune=0.5765 test=0.5855  QPS=    648.8
+   (69s)
+   rerank100
+    nprobe=    1  recall tune=0.3057 test=0.3387  QPS=  14774.0
+    nprobe=    2  recall tune=0.4550 test=0.4969  QPS=  12768.4
+    nprobe=    4  recall tune=0.6138 test=0.6536  QPS=  10651.2
+    nprobe=    8  recall tune=0.7633 test=0.7912  QPS=   8157.2
+    nprobe=   16  recall tune=0.8752 test=0.8915  QPS=   5689.8
+    nprobe=   32  recall tune=0.9432 test=0.9506  QPS=   3658.8
+    nprobe=   64  recall tune=0.9723 test=0.9744  QPS=   2160.9
+    nprobe=  128  recall tune=0.9802 test=0.9812  QPS=   1190.6
+    nprobe=  256  recall tune=0.9816 test=0.9825  QPS=    633.6
+    nprobe=  512  recall tune=0.9816 test=0.9826  QPS=    333.6
+   (104s)
+  m=32: train 49.3s add 8.1s  41.2 B/vec plain, 553.2 B/vec with re-ranking
+   plain
+    nprobe=    1  recall tune=0.2922 test=0.3195  QPS=  16003.5
+    nprobe=    2  recall tune=0.4206 test=0.4533  QPS=   9768.6
+    nprobe=    4  recall tune=0.5387 test=0.5690  QPS=  10040.9
+    nprobe=    8  recall tune=0.6321 test=0.6537  QPS=   6729.3
+    nprobe=   16  recall tune=0.6896 test=0.7045  QPS=   4142.3
+    nprobe=   32  recall tune=0.7189 test=0.7302  QPS=   2369.4
+    nprobe=   64  recall tune=0.7296 test=0.7385  QPS=   1271.7
+    nprobe=  128  recall tune=0.7318 test=0.7413  QPS=    660.4
+    nprobe=  256  recall tune=0.7323 test=0.7417  QPS=    347.9
+    nprobe=  512  recall tune=0.7324 test=0.7417  QPS=    177.4
+   (181s)
+   rerank100
+    nprobe=    1  recall tune=0.3058 test=0.3389  QPS=   8730.9
+    nprobe=    2  recall tune=0.4552 test=0.4972  QPS=   7765.5
+    nprobe=    4  recall tune=0.6143 test=0.6544  QPS=   6866.6
+    nprobe=    8  recall tune=0.7652 test=0.7939  QPS=   5660.8
+    nprobe=   16  recall tune=0.8809 test=0.8976  QPS=   3654.5
+    nprobe=   32  recall tune=0.9542 test=0.9612  QPS=   2206.4
+    nprobe=   64  recall tune=0.9871 test=0.9887  QPS=   1248.6
+    nprobe=  128  recall tune=0.9974 test=0.9976  QPS=    669.5
+   (65s)
+  m=64: train 75.4s add 11.4s  73.2 B/vec plain, 585.2 B/vec with re-ranking
+   plain
+    nprobe=    1  recall tune=0.3028 test=0.3339  QPS=  12504.0
+    nprobe=    2  recall tune=0.4467 test=0.4851  QPS=   9621.0
+    nprobe=    4  recall tune=0.5936 test=0.6301  QPS=   6613.6
+    nprobe=    8  recall tune=0.7220 test=0.7483  QPS=   4259.3
+    nprobe=   16  recall tune=0.8075 test=0.8238  QPS=   2383.8
+    nprobe=   32  recall tune=0.8553 test=0.8646  QPS=   1291.5
+    nprobe=   64  recall tune=0.8731 test=0.8795  QPS=    681.7
+    nprobe=  128  recall tune=0.8776 test=0.8838  QPS=    353.9
+    nprobe=  256  recall tune=0.8785 test=0.8846  QPS=    180.9
+    nprobe=  512  recall tune=0.8786 test=0.8846  QPS=     94.3
+   (319s)
+   rerank100
+    nprobe=    1  recall tune=0.3058 test=0.3389  QPS=   9516.3
+    nprobe=    2  recall tune=0.4552 test=0.4972  QPS=   7608.8
+    nprobe=    4  recall tune=0.6143 test=0.6545  QPS=   5521.1
+    nprobe=    8  recall tune=0.7653 test=0.7939  QPS=   3630.0
+    nprobe=   16  recall tune=0.8810 test=0.8976  QPS=   2197.3
+    nprobe=   32  recall tune=0.9542 test=0.9614  QPS=   1235.1
+    nprobe=   64  recall tune=0.9873 test=0.9889  QPS=    669.4
+    nprobe=  128  recall tune=0.9977 test=0.9980  QPS=    350.4
+   (100s)

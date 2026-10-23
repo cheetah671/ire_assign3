@@ -59,3 +59,18 @@ def recall_vs_truth(I, xq, xb, gt_D, gt_I, k=10):
     """Tie-aware recall@k of a search result I against exact ground truth."""
     pd = exact_distances(xq, xb, I[:, :k])
     return recall_at_k(I, gt_I, k=k, pred_dists=pd, gt_dists=gt_D)
+
+
+def candidate_recall(cand_ids, xq, xb, gt_D, k=10):
+    """Fraction of the true k nearest neighbours that appear anywhere in a
+    longer candidate list (e.g. the top 100 of a compressed index).
+
+    This is the best recall@k that exact re-ranking of those candidates can
+    reach. Tie-aware: a candidate counts if its exact distance is no larger
+    than the true k-th distance; at most k are counted per query.
+    """
+    cand_ids = np.asarray(cand_ids)
+    pd = exact_distances(xq, xb, cand_ids)
+    ok = (pd <= gt_D[:, k - 1:k] * (1 + 1e-5) + 1e-6) & (cand_ids >= 0)
+    counts = np.array([len(set(c[o].tolist())) for c, o in zip(cand_ids, ok)])
+    return float(np.minimum(counts, k).mean() / k)

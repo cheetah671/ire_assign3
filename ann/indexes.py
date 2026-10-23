@@ -6,6 +6,7 @@ import faiss
 import numpy as np
 
 from .metrics import recall_vs_truth
+from .results import QUICK
 from .timing import measure_qps
 
 # search-time parameter grids (ascending; sweeps stop early, see sweep())
@@ -91,7 +92,8 @@ def index_bytes(index):
     return int(faiss.serialize_index(index).size)
 
 
-def sweep(kind, params, index, ds, gt_D, gt_I, n_time, repeats=5, stop_recall=0.995, k=10, log=print):
+def sweep(kind, params, index, ds, gt_D, gt_I, n_time, repeats=5, stop_recall=0.995, k=10, log=print,
+          search=None, extra=None, cooldown=None):
     """Sweep the search parameter. For each value:
 
     - recall@10 on all tune queries (used for choosing settings)
@@ -102,25 +104,37 @@ def sweep(kind, params, index, ds, gt_D, gt_I, n_time, repeats=5, stop_recall=0.
 
     Stops once tune recall >= stop_recall, or when recall has stopped
     improving (PQ indexes plateau below 1).
+
+    search: function to time and evaluate (default index.search), e.g. a
+        re-ranking wrapper around `index`. The parameter is set on `index`.
+    extra: optional function(value) -> dict of extra columns for the row.
+    cooldown: seconds to wait before the first timing. Single-thread speed
+        measured right after an all-core build was ~30% low on the test laptop
+        and recovered within ~10 s (see scripts/check_timing_bias.py).
     """
+    if cooldown is None:
+        cooldown = 5 if QUICK else 20
+    time.sleep(cooldown)
+    search = search or index.search
     xq_tune, xq_test = ds.xq[ds.tune], ds.xq[ds.test]
     rows, prev = [], []
     for value in grid_for(kind, params):
         set_search_param(index, kind, value)
         faiss.omp_set_num_threads(os.cpu_count())  # recall: batch, any threads
-        _, I_tune = index.search(xq_tune, k)
-        _, I_test = index.search(xq_test, k)
+        _, I_tune = search(xq_tune, k)
+        _, I_test = search(xq_test, k)
         r_tune = recall_vs_truth(I_tune, xq_tune, ds.xb, gt_D[ds.tune], gt_I[ds.tune], k)
         r_test = recall_vs_truth(I_test, xq_test, ds.xb, gt_D[ds.test], gt_I[ds.test], k)
 
-        qps, runs = measure_qps(index.search, xq_test[:n_time], k, repeats=repeats, threads=1)
-        qps_tune, _ = measure_qps(index.search, xq_tune[:n_time // 2], k, repeats=1, threads=1, warmup=0)
+        qps, runs = measure_qps(search, xq_test[:n_time], k, repeats=repeats, threads=1)
+        qps_tune, _ = measure_qps(search, xq_tune[:n_time // 2], k, repeats=1, threads=1, warmup=0)
         log(f"    {search_param_name(kind)}={value:5d}  recall tune={r_tune:.4f} "
             f"test={r_test:.4f}  QPS={qps:9.1f}")
         rows.append(dict(search_param=search_param_name(kind), search_value=value,
                          recall10_tune=r_tune, recall10=r_test, qps=qps,
                          qps_min=min(runs), qps_max=max(runs), qps_tune=qps_tune,
-                         n_time_queries=n_time, repeats=repeats, threads=1))
+                         n_time_queries=n_time, repeats=repeats, threads=1,
+                         **(extra(value) if extra else {})))
         prev.append(r_tune)
         if r_tune >= stop_recall:
             break

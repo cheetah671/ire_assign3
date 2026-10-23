@@ -92,3 +92,15 @@ def test_exact_distances_and_ties_end_to_end():
     assert recall_at_k(pred, gt_i, k=2, pred_dists=pd, gt_dists=gt_d) == 0.5
     # padding gets infinite distance
     assert np.isinf(exact_distances(xq, xb, np.array([[-1]])))[0, 0]
+
+
+def test_candidate_recall():
+    from ann.metrics import candidate_recall
+    # 1-D: query at 0, base points at distance 1..6
+    xb = np.array([[1.0], [2.0], [3.0], [4.0], [5.0], [6.0]], dtype=np.float32)
+    xq = np.zeros((1, 1), dtype=np.float32)
+    gt_d = np.array([[1.0, 4.0]])  # squared distances of the true top 2
+    # top-2 found among 4 candidates in the wrong order -> 1.0
+    assert candidate_recall(np.array([[3, 1, 0, 5]]), xq, xb, gt_d, k=2) == 1.0
+    # only one of them present, plus duplicates and padding -> 0.5
+    assert candidate_recall(np.array([[0, 0, -1, 4]]), xq, xb, gt_d, k=2) == 0.5
