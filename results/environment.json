@@ -1,0 +1,14 @@
+{
+  "cpu": "12th Gen Intel(R) Core(TM) i7-12650H",
+  "logical_cores": 16,
+  "physical_cores": 10,
+  "ram_gb": 15.6,
+  "os": "Windows-10-10.0.22631-SP0",
+  "python": "3.11.9",
+  "faiss": "1.15.0",
+  "faiss_simd": "",
+  "numpy": "2.4.6",
+  "h5py": "3.16.0",
+  "pandas": "3.0.5",
+  "matplotlib": "3.11.2"
+}

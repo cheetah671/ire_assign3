@@ -1,0 +1,22 @@
+
+== sift: 1,000,000 base vectors, d=128
+  agreement with file: {'file_recall@10': 1.0, 'file_strict_recall@10': 0.99935, 'file_recall@100': 1.0, 'file_strict_recall@100': 0.99989, 'file_identical_top10_frac': 0.9935, 'ties_at_10th_frac': 0.0137}
+  recall@10 of exact search on test queries: 1.0000
+  one_at_a_time  threads= 1 nq=  500:      32.5 QPS (30.773 ms/query)  runs=[31.8, 34.7, 35.1, 32.5, 25.3]
+  batch          threads= 1 nq= 5000:     566.3 QPS (1.766 ms/query)  runs=[178.8, 234.6, 570.7, 581.8, 566.3]
+  batch          threads=16 nq= 5000:     654.2 QPS (1.529 ms/query)  runs=[683.1, 669.2, 654.2, 647.0, 643.4]
+
+== glove: 1,183,514 base vectors, d=100
+  agreement with file: {'file_recall@10': 1.0, 'file_strict_recall@10': 1.0, 'file_recall@100': 1.0, 'file_strict_recall@100': 1.0, 'file_identical_top10_frac': 1.0, 'ties_at_10th_frac': 0.0002}
+  recall@10 of exact search on test queries: 1.0000
+  one_at_a_time  threads= 1 nq=  500:      33.9 QPS (29.540 ms/query)  runs=[34.0, 32.7, 32.6, 33.9, 33.9]
+  batch          threads= 1 nq= 5000:     513.1 QPS (1.949 ms/query)  runs=[518.3, 513.1, 507.9, 519.3, 507.3]
+  batch          threads=16 nq= 5000:     547.5 QPS (1.827 ms/query)  runs=[606.3, 545.8, 545.1, 558.1, 547.5]
+
+ dataset          mode  threads        qps  recall10
+   sift one_at_a_time        1  32.496122       1.0
+   sift         batch        1 566.288029       1.0
+   sift         batch       16 654.229468       1.0
+  glove one_at_a_time        1  33.852701       1.0
+  glove         batch        1 513.090993       1.0
+  glove         batch       16 547.477627       1.0
