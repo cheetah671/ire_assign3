@@ -7,7 +7,7 @@ import numpy as np
 
 from .metrics import recall_vs_truth
 from .results import QUICK
-from .timing import measure_qps
+from .timing import measure_qps, on_ac_power
 
 # search-time parameter grids (ascending; sweeps stop early, see sweep())
 EF_GRID = [10, 16, 24, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768, 1024]
@@ -134,6 +134,7 @@ def sweep(kind, params, index, ds, gt_D, gt_I, n_time, repeats=5, stop_recall=0.
                          recall10_tune=r_tune, recall10=r_test, qps=qps,
                          qps_min=min(runs), qps_max=max(runs), qps_tune=qps_tune,
                          n_time_queries=n_time, repeats=repeats, threads=1,
+                         ac_power=on_ac_power(),
                          **(extra(value) if extra else {})))
         prev.append(r_tune)
         if r_tune >= stop_recall:

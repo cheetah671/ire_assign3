@@ -44,6 +44,9 @@ numbers, tables and figures from the data files.
 | `scripts/part2_report.py` | Part 2: trade-off plots, QPS-at-recall and build-cost tables |
 | `scripts/part3_compression.py` | Part 3: IVF-PQ vs IVF-PQ + exact re-ranking of the top 100, varying m |
 | `scripts/part3_report.py` | Part 3: figure and table (IVF-Flat from Part 2 as the control) |
+| `ann/synthetic.py` | Part 4 data generator (seeded Gaussian, intrinsic dimension d, stored as 128-d) and relative contrast |
+| `scripts/part4_geometry.py` | Part 4: HNSW and IVF-Flat on synthetic data with d = 8..128, SIFT as control |
+| `scripts/part4_report.py` | Part 4: main figure and table |
 | `scripts/check_timing_bias.py` | checks how much timing right after a build is slowed down |
 | `hypothesis.md` | Part 3 and Part 4 hypotheses (each committed before its experiment ran) |
 

@@ -25,3 +25,7 @@ echo "== Part 2: HNSW / IVF-Flat / IVF-PQ benchmark"
 echo "== Part 3: compression experiment (SIFT)"
 "$PY" scripts/part3_compression.py $QUICK
 "$PY" scripts/part3_report.py $QUICK
+
+echo "== Part 4: intrinsic dimension experiment (synthetic data)"
+"$PY" scripts/part4_geometry.py $QUICK
+"$PY" scripts/part4_report.py $QUICK

@@ -1,0 +1,155 @@
+
+== gauss d=8: 200,000 x 128, relative contrast median 5.381
+  HNSW {'M': 16, 'efC': 100}: build 5.4s
+    efSearch=   10  recall tune=0.9398 test=0.9405  QPS=  36701.4
+    efSearch=   16  recall tune=0.9773 test=0.9789  QPS=  30404.1
+    efSearch=   24  recall tune=0.9929 test=0.9937  QPS=  24087.0
+    efSearch=   32  recall tune=0.9974 test=0.9975  QPS=  19550.8
+    (28s)
+  IVF-Flat {'nlist': 512}: build 1.8s
+    nprobe=    1  recall tune=0.4329 test=0.4277  QPS=  38037.0
+    nprobe=    2  recall tune=0.6220 test=0.6198  QPS=  28781.7
+    nprobe=    4  recall tune=0.8076 test=0.8057  QPS=  15968.1
+    nprobe=    8  recall tune=0.9399 test=0.9390  QPS=   8905.0
+    nprobe=   16  recall tune=0.9928 test=0.9929  QPS=   4549.7
+    nprobe=   32  recall tune=1.0000 test=0.9999  QPS=   2448.4
+    (35s)
+  exact: 171.7 QPS
+
+== gauss d=16: 200,000 x 128, relative contrast median 2.697
+  HNSW {'M': 16, 'efC': 100}: build 8.5s
+    efSearch=   10  recall tune=0.7102 test=0.7052  QPS=  26914.6
+    efSearch=   16  recall tune=0.8147 test=0.8128  QPS=  23055.1
+    efSearch=   24  recall tune=0.8887 test=0.8892  QPS=  16852.5
+    efSearch=   32  recall tune=0.9305 test=0.9299  QPS=  13547.9
+    efSearch=   48  recall tune=0.9687 test=0.9688  QPS=   9806.5
+    efSearch=   64  recall tune=0.9843 test=0.9847  QPS=   7482.3
+    efSearch=   96  recall tune=0.9949 test=0.9951  QPS=   5182.0
+    efSearch=  128  recall tune=0.9982 test=0.9981  QPS=   4011.0
+    (42s)
+  IVF-Flat {'nlist': 512}: build 1.8s
+    nprobe=    1  recall tune=0.2115 test=0.2107  QPS=  43063.6
+    nprobe=    2  recall tune=0.3294 test=0.3289  QPS=  30138.9
+    nprobe=    4  recall tune=0.4794 test=0.4777  QPS=  16081.7
+    nprobe=    8  recall tune=0.6479 test=0.6425  QPS=   8922.8
+    nprobe=   16  recall tune=0.8088 test=0.8045  QPS=   4729.1
+    nprobe=   32  recall tune=0.9281 test=0.9276  QPS=   2478.5
+    nprobe=   64  recall tune=0.9872 test=0.9860  QPS=   1275.9
+    nprobe=  128  recall tune=0.9994 test=0.9994  QPS=    675.1
+    (69s)
+  exact: 166.1 QPS
+
+== gauss d=32: 200,000 x 128, relative contrast median 1.860
+  HNSW {'M': 16, 'efC': 100}: build 9.7s
+    efSearch=   10  recall tune=0.3392 test=0.3386  QPS=  27335.4
+    efSearch=   16  recall tune=0.4387 test=0.4400  QPS=  19471.0
+    efSearch=   24  recall tune=0.5364 test=0.5354  QPS=  14909.8
+    efSearch=   32  recall tune=0.6059 test=0.6007  QPS=  12016.6
+    efSearch=   48  recall tune=0.7026 test=0.6968  QPS=   8950.0
+    efSearch=   64  recall tune=0.7660 test=0.7591  QPS=   6998.0
+    efSearch=   96  recall tune=0.8439 test=0.8385  QPS=   4917.3
+    efSearch=  128  recall tune=0.8882 test=0.8843  QPS=   3701.5
+    efSearch=  192  recall tune=0.9345 test=0.9320  QPS=   2491.0
+    efSearch=  256  recall tune=0.9562 test=0.9548  QPS=   1856.7
+    efSearch=  384  recall tune=0.9748 test=0.9753  QPS=   1197.6
+    efSearch=  512  recall tune=0.9842 test=0.9843  QPS=    864.5
+    efSearch=  768  recall tune=0.9919 test=0.9915  QPS=    534.9
+    efSearch= 1024  recall tune=0.9948 test=0.9950  QPS=    372.5
+    (148s)
+  IVF-Flat {'nlist': 512}: build 1.8s
+    nprobe=    1  recall tune=0.0958 test=0.0960  QPS=  34100.5
+    nprobe=    2  recall tune=0.1559 test=0.1567  QPS=  22704.7
+    nprobe=    4  recall tune=0.2441 test=0.2421  QPS=  13124.7
+    nprobe=    8  recall tune=0.3648 test=0.3625  QPS=   7708.5
+    nprobe=   16  recall tune=0.5146 test=0.5098  QPS=   2295.9
+    nprobe=   32  recall tune=0.6812 test=0.6771  QPS=   1182.4
+    nprobe=   64  recall tune=0.8374 test=0.8334  QPS=   1098.1
+    nprobe=  128  recall tune=0.9486 test=0.9484  QPS=    630.8
+    nprobe=  256  recall tune=0.9957 test=0.9953  QPS=    314.0
+    (139s)
+  exact: 162.4 QPS
+
+== gauss d=64: 200,000 x 128, relative contrast median 1.498
+  HNSW {'M': 16, 'efC': 100}: build 8.6s
+    efSearch=   10  recall tune=0.1767 test=0.1736  QPS=  30075.3
+    efSearch=   16  recall tune=0.2381 test=0.2350  QPS=  23278.1
+    efSearch=   24  recall tune=0.3006 test=0.2986  QPS=  17377.5
+    efSearch=   32  recall tune=0.3533 test=0.3477  QPS=  13340.8
+    efSearch=   48  recall tune=0.4304 test=0.4249  QPS=   9728.2
+    efSearch=   64  recall tune=0.4887 test=0.4837  QPS=   7561.3
+    efSearch=   96  recall tune=0.5716 test=0.5701  QPS=   5302.9
+    efSearch=  128  recall tune=0.6322 test=0.6307  QPS=   4000.6
+    efSearch=  192  recall tune=0.7122 test=0.7107  QPS=   2627.3
+    efSearch=  256  recall tune=0.7631 test=0.7636  QPS=   1937.3
+    efSearch=  384  recall tune=0.8256 test=0.8252  QPS=   1242.1
+    efSearch=  512  recall tune=0.8616 test=0.8613  QPS=    887.5
+    efSearch=  768  recall tune=0.9048 test=0.9036  QPS=    539.4
+    efSearch= 1024  recall tune=0.9285 test=0.9259  QPS=    369.5
+    (143s)
+  IVF-Flat {'nlist': 512}: build 1.9s
+    nprobe=    1  recall tune=0.0452 test=0.0446  QPS=  48328.3
+    nprobe=    2  recall tune=0.0748 test=0.0754  QPS=  29429.0
+    nprobe=    4  recall tune=0.1245 test=0.1225  QPS=  16206.0
+    nprobe=    8  recall tune=0.1964 test=0.1945  QPS=   8431.3
+    nprobe=   16  recall tune=0.2994 test=0.2965  QPS=   5184.4
+    nprobe=   32  recall tune=0.4412 test=0.4395  QPS=   2688.3
+    nprobe=   64  recall tune=0.6158 test=0.6125  QPS=   1255.6
+    nprobe=  128  recall tune=0.8027 test=0.7981  QPS=    623.0
+    nprobe=  256  recall tune=0.9505 test=0.9497  QPS=    312.5
+    nprobe=  512  recall tune=1.0000 test=1.0000  QPS=    159.3
+    (211s)
+  exact: 163.1 QPS
+
+== gauss d=128: 200,000 x 128, relative contrast median 1.313
+  HNSW {'M': 16, 'efC': 100}: build 7.6s
+    efSearch=   10  recall tune=0.1220 test=0.1191  QPS=  35740.9
+    efSearch=   16  recall tune=0.1709 test=0.1640  QPS=  24940.1
+    efSearch=   24  recall tune=0.2172 test=0.2112  QPS=  19182.5
+    efSearch=   32  recall tune=0.2584 test=0.2501  QPS=  15257.1
+    efSearch=   48  recall tune=0.3214 test=0.3132  QPS=  11205.0
+    efSearch=   64  recall tune=0.3696 test=0.3609  QPS=   8615.0
+    efSearch=   96  recall tune=0.4434 test=0.4347  QPS=   5612.1
+    efSearch=  128  recall tune=0.4989 test=0.4911  QPS=   4276.8
+    efSearch=  192  recall tune=0.5752 test=0.5691  QPS=   2853.6
+    efSearch=  256  recall tune=0.6300 test=0.6237  QPS=   2102.8
+    efSearch=  384  recall tune=0.7018 test=0.6966  QPS=   1305.2
+    efSearch=  512  recall tune=0.7477 test=0.7427  QPS=    942.1
+    efSearch=  768  recall tune=0.8077 test=0.7997  QPS=    558.1
+    efSearch= 1024  recall tune=0.8425 test=0.8364  QPS=    387.2
+    (135s)
+  IVF-Flat {'nlist': 512}: build 1.9s
+    nprobe=    1  recall tune=0.0239 test=0.0238  QPS=  46829.4
+    nprobe=    2  recall tune=0.0413 test=0.0424  QPS=  25954.3
+    nprobe=    4  recall tune=0.0710 test=0.0713  QPS=  15366.8
+    nprobe=    8  recall tune=0.1199 test=0.1189  QPS=   8416.3
+    nprobe=   16  recall tune=0.1938 test=0.1937  QPS=   4372.4
+    nprobe=   32  recall tune=0.3051 test=0.3044  QPS=   2341.4
+    nprobe=   64  recall tune=0.4613 test=0.4618  QPS=   1227.9
+    nprobe=  128  recall tune=0.6640 test=0.6651  QPS=    642.9
+    nprobe=  256  recall tune=0.8824 test=0.8823  QPS=    282.9
+    nprobe=  512  recall tune=1.0000 test=1.0000  QPS=    159.6
+    (217s)
+  exact: 163.8 QPS
+
+== SIFT (control): 200,000 x 128, relative contrast median 2.449
+  HNSW {'M': 16, 'efC': 100}: build 6.5s
+    efSearch=   10  recall tune=0.7475 test=0.7658  QPS=  36568.4
+    efSearch=   16  recall tune=0.8382 test=0.8492  QPS=  28644.6
+    efSearch=   24  recall tune=0.8992 test=0.9050  QPS=  21356.0
+    efSearch=   32  recall tune=0.9345 test=0.9367  QPS=  18042.8
+    efSearch=   48  recall tune=0.9649 test=0.9667  QPS=  12829.6
+    efSearch=   64  recall tune=0.9791 test=0.9807  QPS=  10206.1
+    efSearch=   96  recall tune=0.9905 test=0.9919  QPS=   7010.4
+    efSearch=  128  recall tune=0.9949 test=0.9955  QPS=   5362.8
+    efSearch=  192  recall tune=0.9982 test=0.9983  QPS=   3630.1
+    (41s)
+  IVF-Flat {'nlist': 512}: build 1.9s
+    nprobe=    1  recall tune=0.3623 test=0.3959  QPS=  41244.0
+    nprobe=    2  recall tune=0.5317 test=0.5671  QPS=  29158.2
+    nprobe=    4  recall tune=0.7032 test=0.7349  QPS=  15648.4
+    nprobe=    8  recall tune=0.8494 test=0.8661  QPS=   8506.2
+    nprobe=   16  recall tune=0.9442 test=0.9500  QPS=   4697.4
+    nprobe=   32  recall tune=0.9867 test=0.9886  QPS=   2411.3
+    nprobe=   64  recall tune=0.9983 test=0.9989  QPS=   1250.0
+    (47s)
+  exact: 162.8 QPS

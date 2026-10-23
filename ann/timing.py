@@ -19,6 +19,16 @@ def keep_awake():
 keep_awake()
 
 
+def on_ac_power():
+    """True if plugged in (or no battery), False on battery. Laptops slow the
+    CPU on battery, so every timed row records this."""
+    import psutil
+    b = psutil.sensors_battery()
+    if b is not None and not b.power_plugged:
+        print("WARNING: running on battery; timings will be lower", flush=True)
+    return True if b is None else bool(b.power_plugged)
+
+
 def _run(search, xq, k, one_at_a_time):
     t0 = time.perf_counter()
     if one_at_a_time:
