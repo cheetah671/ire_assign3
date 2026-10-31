@@ -184,16 +184,17 @@ so there is plenty of slack for the larger graph. If memory were tighter, IVF-PQ
 vectors on SSD is the fallback; IVF-Flat (5.2 GB) is simpler but 1.5–5× slower at 0.95.</p>
 <p><span class="q">5. How my benchmark could mislead.</span> (a) <b>Machine state during timing.</b> Single-thread
 speed measured right after an all-core build was low: the first timed pass ran at 17K QPS against a normal 30K
-(<code>check_timing_bias.py</code>). I tested this and added a 20 s pause after every build; with 5-pass medians the
-effect on reported numbers was 1–9%, the size of the change when Part 2 was re-run. I also detected (from the Windows
+(<code>check_timing_bias.py</code>). I tested this and added a 20 s pause after every build. Because each reported number is
+the median of 5 passes, the effect is smaller than that first pass: the median measured straight after the build
+was 5% low (29.0K vs 30.6K 10 s later). I also detected (from the Windows
 power log) one run interrupted by sleep and one that ended on battery; both were discarded and re-run, and every row
 now records whether it ran on mains power. Remaining weaknesses: one machine, build times measured once, and the
 first points of the Part 3 run (m = 8, nprobe ≤ 4) still look too slow. (b) <b>Easy, matched data.</b> Queries
 come from the same distribution as the base vectors, and SIFT has low intrinsic dimension. Part 4 tested the second
 point and found it matters a lot: 79× vs no 0.95 at all. Query drift (queries from a different distribution than the
 index was built on) was <b>not</b> tested. Smaller caveats: the reported QPS is one query at a time on one thread
-(batching alone gives ~16× more throughput), and HNSW's multi-threaded build is not deterministic (recall moved by
-about 0.002 between identical runs).</p>
+(batching alone gives ~16× more throughput), and HNSW's multi-threaded build is not deterministic and each setting was
+built only once, so run-to-run variation in its recall is not measured.</p>
 
 </body>
 </html>
